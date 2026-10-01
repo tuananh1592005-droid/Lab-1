@@ -58,8 +58,10 @@ def graph():
 def animation():
     for x in [2, 7, 12, 17]:
 
-        os.system("cls" if os.name == "nt" else "clear")
-
+        if os.name == "nt":
+    os.system("cls")
+else:
+    os.system("clear")
         print("TASK 3 - ANIMATION\n")
 
         print(" " * x + "●")
@@ -73,10 +75,20 @@ def diagram():
     print("TASK 4 - DIAGRAM\n")
 
     with open("sequence.txt", "r") as file:
-        numbers = [float(x) for x in file.read().split()]
+        numbers = []
 
-    first = sum(abs(x) for x in numbers[:125])
-    second = sum(abs(x) for x in numbers[125:250])
+data = file.read().split()
+
+for x in data:
+    numbers.append(float(x))
+    first = 0
+
+for i in range(125):
+    first = first + abs(numbers[i])
+second = 0
+
+for i in range(125, 250):
+    second = second + abs(numbers[i])
 
     total = first + second
 
