@@ -38,10 +38,12 @@ def pattern():
 
     for row in p:
         for x in row:
+
             if x == "#":
                 print(WHITE + "  ", end="")
             else:
                 print(RESET + "  ", end="")
+
         print(RESET)
 
 
@@ -56,12 +58,14 @@ def graph():
 
 # Task 3: Animation
 def animation():
+
     for x in [2, 7, 12, 17]:
 
         if os.name == "nt":
-    os.system("cls")
-else:
-    os.system("clear")
+            os.system("cls")
+        else:
+            os.system("clear")
+
         print("TASK 3 - ANIMATION\n")
 
         print(" " * x + "●")
@@ -74,21 +78,23 @@ def diagram():
 
     print("TASK 4 - DIAGRAM\n")
 
+    numbers = []
+
     with open("sequence.txt", "r") as file:
-        numbers = []
+        data = file.read().split()
 
-data = file.read().split()
+    for x in data:
+        numbers.append(float(x))
 
-for x in data:
-    numbers.append(float(x))
     first = 0
 
-for i in range(125):
-    first = first + abs(numbers[i])
-second = 0
+    for i in range(125):
+        first = first + abs(numbers[i])
 
-for i in range(125, 250):
-    second = second + abs(numbers[i])
+    second = 0
+
+    for i in range(125, 250):
+        second = second + abs(numbers[i])
 
     total = first + second
 
@@ -103,20 +109,38 @@ for i in range(125, 250):
 
 
 # MAIN
+
 flag()
 
 input("\nEnter...")
-os.system("cls")
+
+if os.name == "nt":
+    os.system("cls")
+else:
+    os.system("clear")
+
 
 pattern()
 
 input("\nEnter...")
-os.system("cls")
+
+if os.name == "nt":
+    os.system("cls")
+else:
+    os.system("clear")
+
 
 graph()
 
 input("\nEnter...")
+
 animation()
 
-os.system("cls")
+
+if os.name == "nt":
+    os.system("cls")
+else:
+    os.system("clear")
+
+
 diagram()
